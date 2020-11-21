@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+Story.destroy_all if Rails.env.development?
+
+10.times do
+  stories = Story.create!(
+    name: Faker::DcComics.title,
+    text: Faker::ChuckNorris.fact
+  )
+end
